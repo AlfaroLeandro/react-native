@@ -15,6 +15,26 @@ interface AuthEstado {
 export const useAuthStore = create<AuthEstado>()( (set) => ({
         status: 'chequeando',
         token: undefined,
-        usuario: undefined
+        usuario: undefined,
+
+        login: (email: string, clave: string) => {
+
+            set({
+                status: 'autorizado',
+                token: "abc123",
+                usuario: {
+                    nombre: "leandro",
+                    email: "a@a.com"
+                },
+            })
+
+        },
+        logout: () => {
+            set({
+                status: 'autorizado',
+                token: undefined,
+                usuario: undefined,
+            })
+        }
     })
 )
